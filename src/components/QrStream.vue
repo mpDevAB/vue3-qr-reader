@@ -5,9 +5,17 @@
     If z-index is not defined, elements are stacked in the order they appear in the DOM.
     The first element is at the very bottom and subsequent elements are added on top.
     -->
-    <video
+<!--    <video
       ref="video"
       v-show="shouldScan"
+      class="qr-stream-camera"
+      autoplay
+      muted
+      playsinline
+    ></video>-->
+    <video
+      ref="video"
+      :class="{ 'qrcode-stream-camera--hidden': !shouldScan }"
       class="qr-stream-camera"
       autoplay
       muted
@@ -310,5 +318,10 @@ export default defineComponent({
 
   display: block;
   object-fit: cover;
+}
+
+.qrcode-stream-camera--hidden {
+  visibility: hidden;
+  position: absolute;
 }
 </style>
